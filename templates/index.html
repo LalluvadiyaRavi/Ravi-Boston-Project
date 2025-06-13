@@ -1,153 +1,150 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Boston Housing Price Prediction</title>
-    <style>
-        *{
-        box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(to right, #a18cd1, #fbc2eb);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-    
-        form {
-            background-color: white;
-            backdrop-filter: blur(12px);
-            border-radius: 20px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
-            padding: 40px;
-            max-width: 900px;
-            width: 100%;
-            color: #fff;
-        }
-        .form-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px 40px;
-            margin-top: 20px;
-        }
+    <meta charset="UTF-8">
+    <title>Ravi-Boston-Project</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f6f9;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
 
-        .form-group {
-            display: flex;
-            flex-direction: column;
-        }
-        h2 {
-            text-align: center;
-            color: #6c3483;
-            margin-bottom: 20px;
-        }
-    
-        label {
-            display: block;
-            margin-top: 15px;
-            font-weight: 500;
-            color: #333;
-        }
-    
-        input[type="text"] {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            border: 1px solid #bbb;
-            border-radius: 8px;
-        }
-    
-        input[type="submit"] {
-            width: 100%;
-            padding: 12px;
-            background-color: #6c3483;
-            color: white;
-            font-weight: bold;
-            border: none;
-            border-radius: 8px;
-            margin-top: 25px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-    
-        input[type="submit"]:hover {
-            background-color: #884ea0;
-        }
-    
-        h3 {
-            text-align: center;
-            color: #2e8b57;
-        }
-    </style>
+    form {
+        background-color: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        width: 600px;
+    }
+
+    h2 {
+        text-align: center;
+        color: #333;
+    }
+
+    .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px 40px;
+        margin-top: 20px;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    label {
+        font-weight: bold;
+        margin-bottom: 5px;
+        color: #555;
+    }
+
+    input[type="text"] {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+
+    input[type="submit"] {
+        width: 100%;
+        padding: 12px;
+        background-color: #007bff;
+        color: white;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        margin-top: 30px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+
+    h3 {
+        text-align: center;
+        color: green;
+        margin-top: 20px;
+    }
+</style>
+
     
 </head>
 <body>
-    
+
+    <div>
     <h2>Boston Housing Price Prediction</h2>
-    <form action="/predict" method="post">
-        <div class="form-grid">
-            <div class="form-group">
-                <label>CRIM:</label>
-                <input type="text" name="CRIM">
-            </div>
-            <div class="form-group">
-                <label>ZN:</label>
-                <input type="text" name="ZN">
-            </div>
-            <div class="form-group">
-                <label>INDUS:</label>
-                <input type="text" name="INDUS">
-            </div>
-            <div class="form-group">
-                <label>CHAS:</label>
-                <input type="text" name="CHAS">
-            </div>
-            <div class="form-group">
-                <label>NOX:</label>
-                <input type="text" name="NOX">
-            </div>
-            <div class="form-group">
-                <label>RM:</label>
-                <input type="text" name="RM">
-            </div>
-            <div class="form-group">
-                <label>AGE:</label>
-                <input type="text" name="AGE">
-            </div>
-            <div class="form-group">
-                <label>DIS:</label>
-                <input type="text" name="DIS">
-            </div>
-            <div class="form-group">
-                <label>RAD:</label>
-                <input type="text" name="RAD">
-            </div>
-            <div class="form-group">
-                <label>TAX:</label>
-                <input type="text" name="TAX">
-            </div>
-            <div class="form-group">
-                <label>PTRATIO:</label>
-                <input type="text" name="PTRATIO">
-            </div>
-            <div class="form-group">
-                <label>B:</label>
-                <input type="text" name="B">
-            </div>
-            <div class="form-group">
-                <label>LSTAT:</label>
-                <input type="text" name="LSTAT">
-            </div>
+<form action="/predict" method="post">
+    <div class="form-grid">
+        <div class="form-group">
+            <label>CRIM:</label>
+            <input type="text" name="CRIM">
         </div>
-        <input type="submit" value="Predict">
-    </form>
-    
-    {% if prediction_text %}
-        <h3>{{ prediction_text }}</h3>
-    {% endif %}
-    
+        <div class="form-group">
+            <label>ZN:</label>
+            <input type="text" name="ZN">
+        </div>
+        <div class="form-group">
+            <label>INDUS:</label>
+            <input type="text" name="INDUS">
+        </div>
+        <div class="form-group">
+            <label>CHAS:</label>
+            <input type="text" name="CHAS">
+        </div>
+        <div class="form-group">
+            <label>NOX:</label>
+            <input type="text" name="NOX">
+        </div>
+        <div class="form-group">
+            <label>RM:</label>
+            <input type="text" name="RM">
+        </div>
+        <div class="form-group">
+            <label>AGE:</label>
+            <input type="text" name="AGE">
+        </div>
+        <div class="form-group">
+            <label>DIS:</label>
+            <input type="text" name="DIS">
+        </div>
+        <div class="form-group">
+            <label>RAD:</label>
+            <input type="text" name="RAD">
+        </div>
+        <div class="form-group">
+            <label>TAX:</label>
+            <input type="text" name="TAX">
+        </div>
+        <div class="form-group">
+            <label>PTRATIO:</label>
+            <input type="text" name="PTRATIO">
+        </div>
+        <div class="form-group">
+            <label>B:</label>
+            <input type="text" name="B">
+        </div>
+        <div class="form-group">
+            <label>LSTAT:</label>
+            <input type="text" name="LSTAT">
+        </div>
+    </div>
+    <input type="submit" value="Predict">
+</form>
+
+{% if prediction_text %}
+    <h3>{{ prediction_text }}</h3>
+{% endif %}
+
+    </div>
+
 </body>
 </html>
