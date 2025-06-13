@@ -6,10 +6,16 @@
         *{
         box-sizing: border-box;
             margin: 0;
-            padding: 0;}
+            padding: 0;
+        }
         body {
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(to right, #a18cd1, #fbc2eb);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
         }
     
         form {
@@ -21,18 +27,18 @@
             max-width: 900px;
             width: 100%;
             color: #fff;
-    }
-    .form-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 20px 40px;
-        margin-top: 20px;
-    }
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px 40px;
+            margin-top: 20px;
+        }
 
-    .form-group {
-        display: flex;
-        flex-direction: column;
-    }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
         h2 {
             text-align: center;
             color: #6c3483;
